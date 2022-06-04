@@ -3,7 +3,7 @@ package golang_united_school_homework
 import (
 	"errors"
 	"fmt"
-	"reflect"
+	"strings"
 )
 
 // box contains list of shapes and able to perform operations on them
@@ -109,7 +109,7 @@ func (b *box) RemoveAllCircles() error {
 
 	for {
 		if i >= len(b.shapes) { break }
-		if reflect.TypeOf(b.shapes[i]).Name() != "Circle" { 
+		if !strings.Contains(fmt.Sprintf("%T", b.shapes[i]), "Circle") { 
 			i++
 		} else {
 			_, err := b.ExtractByIndex(i)
@@ -127,4 +127,9 @@ func (b *box) RemoveAllCircles() error {
 	return errors.New ("circles are not exist in the list")
 	// panic("implement me")
 
+}
+
+// Return box length
+func (b box) GetLen() int {
+	return len(b.shapes)
 }
