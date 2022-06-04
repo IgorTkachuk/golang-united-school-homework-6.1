@@ -108,7 +108,7 @@ func (b *box) RemoveAllCircles() error {
 	var i, j int
 
 	for {
-		if i > len(b.shapes) { break }
+		if i >= len(b.shapes) { break }
 		if reflect.TypeOf(b.shapes[i]).Name() != "Circle" { 
 			i++
 		} else {
